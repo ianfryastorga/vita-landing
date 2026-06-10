@@ -112,24 +112,38 @@
   .menu-btn span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px}
 
   /* ---------- hero ---------- */
-  .hero{position:relative;overflow:hidden;background:#e9f4f5;min-height:100svh;display:flex;flex-direction:column}
-  .hero-bg{position:absolute;inset:0;background:url('hero-mesh.png') 50% 50%/170% 170% no-repeat;
-    animation:heroDrift 30s ease-in-out infinite alternate;will-change:background-position,transform}
+  .hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#bfe6ea 0%,#7fc8d3 38%,#3a9fb3 70%,#016075 100%);min-height:100svh;display:flex;flex-direction:column}
+  .hero-bg{position:absolute;inset:0;background:url('hero-mesh.png') 50% 50%/180% 180% no-repeat;
+    background-color:#7fc8d3;
+    filter:saturate(1.32) contrast(1.05);
+    animation:heroDrift 26s ease-in-out infinite alternate;will-change:background-position,transform}
   @keyframes heroDrift{
-    0%{background-position:10% 20%;transform:scale(1.05)}
-    33%{background-position:52% 38%;transform:scale(1.10)}
-    66%{background-position:74% 66%;transform:scale(1.12)}
-    100%{background-position:34% 84%;transform:scale(1.06)}}
+    0%{background-position:6% 16%;transform:scale(1.06)}
+    33%{background-position:54% 36%;transform:scale(1.12)}
+    66%{background-position:78% 70%;transform:scale(1.15)}
+    100%{background-position:30% 88%;transform:scale(1.07)}}
+  /* vivid animated color blobs layered over the image */
+  .hero-color{position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:screen;opacity:.9;
+    background:
+      radial-gradient(28% 34% at 72% 30%, rgba(127,212,222,.85), transparent 62%),
+      radial-gradient(26% 32% at 88% 62%, rgba(14,138,158,.75), transparent 64%),
+      radial-gradient(30% 30% at 58% 82%, rgba(1,96,117,.6), transparent 66%),
+      radial-gradient(22% 26% at 40% 50%, rgba(132,195,191,.55), transparent 68%);
+    animation:heroBlobs 18s ease-in-out infinite alternate;will-change:transform}
+  @keyframes heroBlobs{
+    0%{transform:translate3d(0,0,0) scale(1)}
+    50%{transform:translate3d(3%,-2.5%,0) scale(1.08) rotate(4deg)}
+    100%{transform:translate3d(-3%,2%,0) scale(1.04) rotate(-3deg)}}
   .hero-sheen{position:absolute;inset:-15%;pointer-events:none;mix-blend-mode:soft-light;
-    background:radial-gradient(34% 40% at 30% 28%, rgba(255,255,255,.6), transparent 70%),radial-gradient(30% 36% at 72% 72%, rgba(132,195,191,.5), transparent 72%);
-    animation:heroSheen 19s ease-in-out infinite alternate}
+    background:radial-gradient(34% 40% at 30% 28%, rgba(255,255,255,.7), transparent 70%),radial-gradient(30% 36% at 72% 72%, rgba(132,195,191,.55), transparent 72%);
+    animation:heroSheen 15s ease-in-out infinite alternate}
   @keyframes heroSheen{0%{transform:translate(-5%,-3%) rotate(0deg)}100%{transform:translate(8%,6%) rotate(7deg)}}
   @keyframes heroFlow{
     0%{background-position:0% 0%,100% 0%,50% 100%,0% 100%,0 0}
     50%{background-position:24% 30%,72% 24%,38% 72%,30% 64%,0 0}
     100%{background-position:8% 14%,88% 40%,60% 84%,12% 86%,0 0}}
   .hero-veil{position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(100deg,rgba(244,250,250,.95) 0%,rgba(244,250,250,.68) 25%,rgba(244,250,250,.18) 45%,rgba(244,250,250,0) 63%)}
+    background:linear-gradient(100deg,rgba(245,250,250,.96) 0%,rgba(245,250,250,.7) 26%,rgba(245,250,250,.2) 46%,rgba(245,250,250,0) 64%)}
   .hero-fade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(246,250,250,0) 72%,rgba(255,255,255,.92) 100%)}
   .hero-logos{position:relative;z-index:3;border-top:1px solid rgba(255,255,255,.6);
     background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.66));
@@ -456,7 +470,7 @@
   .reveal-done .reveal{opacity:1!important;transform:none!important;transition:none!important}
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
-    .hero-bg,.hero-sheen,.marquee-track,.cta-grad{animation:none}
+    .hero-bg,.hero-color,.hero-sheen,.marquee-track,.cta-grad{animation:none}
     .cycle-rail .cycle-line::after{transform:scaleX(1)}
   }
 
@@ -481,6 +495,22 @@
     .nav-cta{padding:0 .9rem;font-size:13px;height:38px}
     .cycle-rail{grid-template-columns:repeat(3,1fr);row-gap:34px}
     .cycle-line{display:none}
+    /* center everything on mobile */
+    .hero-grid{margin:0 auto;text-align:center;padding:104px 0 52px}
+    .hero-copy{display:flex;flex-direction:column;align-items:center}
+    .subhead{margin-left:auto;margin-right:auto}
+    .hero-cta{justify-content:center}
+    .microproof{justify-content:center;text-align:left}
+    .act-row,.act-row.flip{text-align:center;justify-items:center}
+    .act-copy{display:flex;flex-direction:column;align-items:center}
+    .act-step{justify-content:center}
+    .act-copy p.desc{margin-left:auto;margin-right:auto}
+    .act-visual{width:100%}
+    .boutique-grid{text-align:center}
+    .boutique-copy{display:flex;flex-direction:column;align-items:center}
+    .feat-list{text-align:left;max-width:420px;margin-left:auto;margin-right:auto}
+    .incl-grid{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}
+    .incl-card{text-align:center;align-items:center}
   }
   @media (max-width:600px){
     /* stack the who-it's-for toggle: two long labels won't fit side by side */
@@ -491,12 +521,18 @@
       box-shadow:0 2px 8px rgba(1,96,117,.28),inset 0 1px 0 rgba(255,255,255,.25)}
   }
   @media (max-width:520px){
-    .hero-logos-row{flex-direction:column;align-items:flex-start;gap:11px}
-    .ft-top{grid-template-columns:1fr}
-    .ft-bot{flex-direction:column;align-items:flex-start}
+    .hero-logos-row{flex-direction:column;align-items:center;gap:12px;text-align:center}
+    .ft-top{grid-template-columns:1fr;text-align:center}
+    .ft-brand{display:flex;flex-direction:column;align-items:center}
+    .ft-brand .ft-tag{margin-left:auto;margin-right:auto}
+    .ft-soc{justify-content:center}
+    .ft-col ul{align-items:center}
+    .ft-bot{flex-direction:column;align-items:center;text-align:center}
     .cycle-rail{grid-template-columns:repeat(2,1fr)}
-    .hero-grid{padding:88px 0 48px}
+    .hero-grid{padding:96px 0 44px}
     .quote-band .quote-mark{height:38px}
+    .lang{margin-left:0}
+    .nav-inner{justify-content:space-between}
   }
 
   /* ========== onboarding / what you get ========== */
