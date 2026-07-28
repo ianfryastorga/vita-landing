@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /centers/
+
+# AI crawlers welcome — this is a marketing site
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://vita.lat/sitemap.xml
